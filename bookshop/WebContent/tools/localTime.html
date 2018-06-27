@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<script>
+	window.onload=function(){
+		var p=document.getElementById("time");
+		setInterval(function(){
+			var now=new Date();
+			var time=now.toLocaleString();
+			p.innerHTML=time;
+			
+			
+		},1000);
+		
+	}
+	
+</script>
+
+<span id="time">
+	
+</span>

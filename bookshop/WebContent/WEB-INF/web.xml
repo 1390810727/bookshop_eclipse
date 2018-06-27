@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" metadata-complete="true" version="3.1">
+  <display-name>Welcome to Tomcat</display-name>
+  <description>
+     Welcome to Tomcat
+  </description>
+  
+  
+  <!-- 做测试使用 -->
+
+ 
+
+ 
+  <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>test.FileTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+  	<listener-class>web.MyListener</listener-class>
+  </listener>
+  
+  <filter>
+  	<filter-name>sellerLogin</filter-name>
+  	<filter-class>web.seller.SellerLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>sellerLogin</filter-name>
+   	<url-pattern>/seller/*</url-pattern>
+   	<url-pattern>*.saleAction</url-pattern>
+  	<url-pattern>*.orderFormAction</url-pattern>
+  	<url-pattern>*.commentAction</url-pattern>
+  	<url-pattern>*.bookAction</url-pattern>
+  	<url-pattern>*.sellerAction</url-pattern>
+  	<url-pattern>*.shopAction</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>customerLogin</filter-name>
+  	<filter-class>web.main.CustomerLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>customerLogin</filter-name>
+   	<url-pattern>/main/*</url-pattern>
+   	<url-pattern>*.c_orderFormAction</url-pattern>
+  	<url-pattern>*.shopCardAction</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>searchBook</servlet-name>
+    <servlet-class>web.main.SearchBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchBook</servlet-name>
+    <url-pattern>*.searchBookAction</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ajaxTest</servlet-name>
+    <servlet-class>test.ActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ajaxTest</servlet-name>
+    <url-pattern>*.ajaxTest</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!--顾客登陆的servlet  -->
+
+  
+  <servlet>
+  	<servlet-name>doLoginCustomer</servlet-name>
+  	<servlet-class>web.main.CustomerLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>doLoginCustomer</servlet-name>
+  	<url-pattern>*.customerLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>c_orderForm</servlet-name>
+  	<servlet-class>web.main.OrderFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>c_orderForm</servlet-name>
+  	<url-pattern>*.c_orderFormAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>shopCard</servlet-name>
+  	<servlet-class>web.main.ShopCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>shopCard</servlet-name>
+  	<url-pattern>*.shopCardAction</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>mainPage</servlet-name>
+    <servlet-class>web.main.MainPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mainPage</servlet-name>
+    <url-pattern>/mainPage</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>randomBook</servlet-name>
+    <servlet-class>web.main.RandomBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>randomBook</servlet-name>
+    <url-pattern>/randomBook</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>saleAction</servlet-name>
+    <servlet-class>web.seller.SaleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>saleAction</servlet-name>
+    <url-pattern>*.saleAction</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>orderFormAction</servlet-name>
+    <servlet-class>web.seller.OrderFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>orderFormAction</servlet-name>
+    <url-pattern>*.orderFormAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>commentAction</servlet-name>
+    <servlet-class>web.seller.CommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>commentAction</servlet-name>
+    <url-pattern>*.commentAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>bookAction</servlet-name>
+    <servlet-class>web.seller.BookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookAction</servlet-name>
+    <url-pattern>*.bookAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>sellerAction</servlet-name>
+    <servlet-class>web.seller.SellerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sellerAction</servlet-name>
+    <url-pattern>*.sellerAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>shopAction</servlet-name>
+    <servlet-class>web.seller.ShopServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>shopAction</servlet-name>
+    <url-pattern>*.shopAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>createImgCode</servlet-name>
+    <servlet-class>web.administrator.ValidCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>createImgCode</servlet-name>
+    <url-pattern>/createImgCode</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>doLoginAdmin</servlet-name>
+    <servlet-class>web.administrator.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doLoginAdmin</servlet-name>
+    <url-pattern>*.adminLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>sellerInfo</servlet-name>
+    <servlet-class>web.administrator.SellerInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sellerInfo</servlet-name>
+    <url-pattern>*.sellerInfoAction</url-pattern>
+  </servlet-mapping>
+  
+
+  
+  <servlet>
+    <servlet-name>doLoginSeller</servlet-name>
+    <servlet-class>web.seller.SellerLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doLoginSeller</servlet-name>
+    <url-pattern>*.sellerLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>web.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>*.logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>register</servlet-name>
+    <servlet-class>web.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>register</servlet-name>
+    <url-pattern>*.register</url-pattern>
+  </servlet-mapping>
+  
+  
+  <session-config>
+  	<session-timeout>10</session-timeout>
+  </session-config>
+</web-app>
